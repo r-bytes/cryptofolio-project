@@ -1,3 +1,5 @@
 export { default as CoinSearch } from "./CoinSearch"
 export { default as Navbar } from "./Navbar"
 export { default as ThemeToggle } from "./ThemeToggle"
+export { default as CoinItem } from "./CoinItem"
+export { default as CoinHeader } from "./CoinHeader"
