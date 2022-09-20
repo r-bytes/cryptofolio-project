@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
-import ThemeToggle from "./ThemeToggle"
+import Theme from "./Theme"
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
                 <h1 className="text-2xl"> Cryptobase </h1>
             </Link>
             <div className={hideMobile}>
-                <ThemeToggle />
+                <Theme />
             </div>
             <div className={hideMobile}>
                 <Link to={"/signin"} className="p-4 hover:text-accent"> Sign In </Link>
@@ -38,7 +38,7 @@ const Navbar = () => {
                     </li>
 
                     <li className="py-6">
-                        <ThemeToggle />
+                        <Theme />
                     </li>
                 </ul>
                 <div className="flex flex-col w-full p-4">

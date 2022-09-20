@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/";
-import { Home, SignIn, SignUp } from "./pages/";
+import { CoinPage, Home, SignIn, SignUp } from "./pages/";
 import axios from "axios";
 
 function App() {
@@ -20,18 +20,12 @@ function App() {
         <div>
             <Navbar />
             <Routes>
-                <Route
-                    path="/" 
-                    element={<Home coins={coins} btc={btc} />}
-                />
-                <Route
-                    path="/signin"
-                    element={<SignIn />}
-                />
-                <Route
-                    path="/signup"
-                    element={<SignUp />}
-                />
+                <Route path="/" element={<Home coins={coins} btc={btc} />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/coin/:coinId" element={<CoinPage />}>
+                    <Route path=":coinId" />
+                </Route>
             </Routes>
         </div>
     );

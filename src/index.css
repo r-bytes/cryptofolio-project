@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-    @apply bg-primary text-primary
+    @apply bg-primary text-primary;
+    font-size: small;
 }
 
 .rounded-div {

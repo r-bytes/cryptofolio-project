@@ -21,6 +21,11 @@ const ThemeContext = createContext()
 
 export const ThemeProvider = ({initialTheme, children}) => {
     const [theme, setTheme] = useState(getInitialTheme)
+
+    const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark")
+    const buttonClass = "flex items-center cursor-pointer"
+    const iconClass = "text-primary text-2xl mr-2"
+    
     const rawSetTheme = (theme) => {
         const root = window.document.documentElement
         const isDark = theme === "dark"
@@ -30,6 +35,7 @@ export const ThemeProvider = ({initialTheme, children}) => {
 
         localStorage.setItem("color-theme", theme)
     }
+
 
     if (initialTheme) {
         rawSetTheme(initialTheme)
@@ -42,7 +48,9 @@ export const ThemeProvider = ({initialTheme, children}) => {
     return (
         <ThemeContext.Provider value={{
             theme,
-            setTheme
+            toggleTheme,
+            buttonClass,
+            iconClass
         }}>
             {children}
         </ThemeContext.Provider>
