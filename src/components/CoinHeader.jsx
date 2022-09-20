@@ -14,7 +14,7 @@ const CoinHeader = () => {
             <th className="hidden sm:table-cell"> Price (btc) </th>
             <th> 24h </th>
             <th className="hidden md:table-cell"> 24h Volume </th>
-            <th className="hidden md:table-cell"> Market </th>
+            <th className="hidden sm:table-cell"> Market </th>
             <th> {width <= 650 ? "7d" : "Last 7 Days"} </th>
         </tr>
     )

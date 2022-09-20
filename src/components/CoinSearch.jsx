@@ -24,8 +24,8 @@ const CoinSearch = ({coins, btc}) => {
                     <CoinHeader />
                 </thead>
                 <tbody>
+                    {/* eslint-disable-next-line array-callback-return */}
                     {coins.filter(value => {
-                            console.log(value.symbol)
                         if (searchValue === "") {
                             return value
 

@@ -1,7 +1,7 @@
 {
   "name": "crypto-project",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -43,5 +43,9 @@
   "devDependencies": {
     "autoprefixer": "^10.4.11",
     "postcss": "^8.4.16"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/r-bytes/crypto-project.git",
+  "author": "r-bytes <101632683+r-bytes@users.noreply.github.com>",
+  "license": "MIT"
 }
