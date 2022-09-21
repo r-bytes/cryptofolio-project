@@ -12,12 +12,10 @@
 }
 
 .dark {
-    /* --color-bg-primary: #2d3748; */
     --color-bg-primary: #1C2226;
     --color-bg-secondary: #283141;
     --color-text-primary: #dbdbdb;
     --color-text-secondary: #e2e8f0;
-    /* --color-text-accent: #81e6d9; */
     --color-text-accent: #70B5F9;
     --color-bg-input: #4a5361;
     --color-bg-button: #70B5F9;
