@@ -7,6 +7,8 @@ import Theme from "./Theme"
 const Footer = () => {
     const titleClass = "font-bold"
     const textClass = "text-sm py-2 leading-none"
+    const buttonClass = "bg-button text-btnText px-4 py-2 w-full rounded-2xl shadow-xl hover:shadow-2xl hover:bg-buttonHover md:w-auto my-2 md:mr-2"
+    const textInputClass = "bg-primary border border-input p-2 mr-2 w-full shadow-xl rounded-2xl md:w-auto outline-none focus:border-accent"
     
     return (
         <div className="rounded-div mt-8 pt-8 text-primary">
@@ -44,8 +46,8 @@ const Footer = () => {
                             <p className="text-center md:text-right md:mr-2"> Sign Up for crypto news </p>
                             <div className="py-4">
                                 <form>
-                                    <input className="bg-primary border-input p-2 mr-2 w-full shadow-xl rounded-2xl md:w-auto" type="email" name="email" placeholder="Enter your email" />
-                                    <button className="bg-button text-btnText px-4 p-2 w-full rounded-2xl shadow-xl hover:shadow-2xl hover:bg-buttonHover md:w-auto my-2 md:mr-2"> Sign Up </button>
+                                    <input className={textInputClass} type="email" name="email" placeholder="Enter your email" />
+                                    <button className={buttonClass}> Sign Up </button>
                                 </form>
                             </div>
                             <div className="flex py-4 justify-center text-accent gap-10 md:justify-end md:mr-2">

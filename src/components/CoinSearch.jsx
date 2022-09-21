@@ -5,6 +5,7 @@ import { useWindowSize } from "../hooks"
 const CoinSearch = ({coins, btc}) => {
     const [searchValue, setSearchValue] = useState("");
     const {width} = useWindowSize()
+    const textInputClass = "w-full bg-primary border border-input px-4 py-2 rounded-2xl shadow-xl outline-none focus:border-accent"
 
     return (
         <div className="rounded-div my-4">
@@ -13,7 +14,7 @@ const CoinSearch = ({coins, btc}) => {
                 <form>
                     <input
                         type="text"
-                        className="w-full bg-primary border border-input px-4 py-2 rounded-2xl shadow-xl"
+                        className={textInputClass}
                         placeholder="Search a Coin"
                         onChange={(e) => setSearchValue(e.target.value)}
                     />
