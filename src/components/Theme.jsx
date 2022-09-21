@@ -6,7 +6,7 @@ const Theme = () => {
     const {theme, toggleTheme, buttonClass, iconClass} = useThemeContext()
     
     return (
-        <div className="p-2">
+        <div className="p-2 hover:text-accent">
             {theme === "dark" ? (
                 <div className={buttonClass} onClick={toggleTheme}>
                     <HiSun className={iconClass} /> Light Mode

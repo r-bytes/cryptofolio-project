@@ -10,6 +10,7 @@ module.exports = {
             primary: "var(--color-bg-primary)",
             secondary: "var(--color-bg-secondary)",
             button: "var(--color-bg-button)",
+            buttonHover: "var(--color-bg-button-secondary)",
         },
         textColor: {
             accent: "var(--color-text-accent)",

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import CoinHeader from "./CoinHeader";
 import CoinItem from "./CoinItem"
+import { useWindowSize } from "../hooks"
 
 const CoinSearch = ({coins, btc}) => {
-    const [searchValue, setSearchValue] = useState("");    
+    const [searchValue, setSearchValue] = useState("");
+    const {width} = useWindowSize()
 
     return (
         <div className="rounded-div my-4">
@@ -21,7 +22,18 @@ const CoinSearch = ({coins, btc}) => {
 
             <table className="w-full border-collapse text-center">
                 <thead>
-                    <CoinHeader />
+                    <tr className="border-b">
+                        <th> </th>
+                        <th className="px-4"> # </th>
+                        <th className="text-left"> Coin </th>
+                        <th> </th>
+                        <th className="sm:w-32"> {width <= 650 ? "Price" : "Price (usd)"} </th>
+                        <th className="hidden sm:table-cell"> Price (btc) </th>
+                        <th> 24h </th>
+                        <th className="hidden md:table-cell"> 24h Volume </th>
+                        <th className="hidden sm:table-cell"> Market </th>
+                        <th> {width <= 650 ? "7d" : "Last 7 Days"} </th>
+                    </tr>
                 </thead>
                 <tbody>
                     {/* eslint-disable-next-line array-callback-return */}
