@@ -1,13 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom"
+import { doc, onSnapshot, updateDoc } from "firebase/firestore"
+import { db } from "../firebase";
+import { useAuthContext } from "../context/AuthContext";
 
 const WatchList = () => {
     const [coins, setCoins] = useState([]);
+    const { user } = useAuthContext()
+
+    useEffect(() => {
+        onSnapshot(doc(db, "users", `${user.email}`), (doc) => {
+            setCoins(doc?.data()?.watchList)
+        })
+    }, [user?.email]);
+
+    const coinPath = doc(db, "users", `${user.email}`)
+
+    const deleteCoin = async (id) => {
+        try {
+            const result = coins.filter(item => item.id !== id)
+            await updateDoc(coinPath, {
+                watchList: result
+            })
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
     
     return (
         <div>
-            {coins.length === 0
+            {coins?.length === 0
                 ? (<p> You don't have any coins saved. Please save a coin to add it to your watch list. <Link className="text-accent hover:underline" to='/'>Click here</Link>  to search coins. </p>)
                 : (
                     <table className="w-full border-collapse text-center">
@@ -34,7 +57,9 @@ const WatchList = () => {
                                         </Link>
                                     </td>
                                     <td className="pl-8">
-                                        <AiOutlineClose className="cursor-pointer" />
+                                        <AiOutlineClose className="cursor-pointer" 
+                                            onClick={() => deleteCoin(coin.id)}
+                                        />
                                     </td>
                                 </tr>
                             ))}

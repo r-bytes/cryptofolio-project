@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiFillLock, AiOutlineMail } from "react-icons/ai"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useAuthContext } from "../context/AuthContext"
 
 const SignIn = () => {
     const divInputClass = "relative my-2 w-full rounded-2xl shadow-xl"
@@ -8,16 +9,42 @@ const SignIn = () => {
     const iconClass = "absolute right-2 top-3 text-gray-400"
     const buttonClass = "w-full bg-button text-btnText px-4 py-2 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-buttonHover my-2"
 
+    // states
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    
+    // hooks
+    const navigate = useNavigate()
+    const { user, signIn } = useAuthContext()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setError("")
+
+        try {
+            await signIn(email, password)
+            navigate("/account")
+            
+        } catch (e) {
+            setError(e.message)
+            console.log(error)
+        }
+    }
+
     return (
         <div>
             <div className="max-w-[400px] mx-auto min-h-[600px] px-4 py-20">
                 <h1 className="text-2xl font-bold"> Sign In </h1>
-                <form>
-                    {/* Username */}
+                <form onSubmit={handleSubmit}>
+                    {/* Email */}
                     <div className="my-4">
                         <label htmlFor="email"> Email </label>
                         <div className={divInputClass}>
-                            <input className={textInputClass} type="email" name="email" id="email" placeholder="email" />
+                            <input className={textInputClass}
+                                type="email" name="email" id="email" placeholder="email" 
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                             <AiOutlineMail className={iconClass} />
                         </div>
                     </div>
@@ -25,7 +52,10 @@ const SignIn = () => {
                     <div className="my-4">
                         <label htmlFor="password"> Password </label>
                         <div className={divInputClass}>
-                            <input className={textInputClass} type="password" name="password" id="password" />
+                            <input className={textInputClass}
+                                type="password" name="password" id="password" 
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                             <AiFillLock className={iconClass} />
                         </div>
                     </div>
